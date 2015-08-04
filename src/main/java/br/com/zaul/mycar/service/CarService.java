@@ -34,15 +34,11 @@ public class CarService {
 		List<Vehicle> newVehicles = parser.parseNewVehicles();
 		
 		if (newVehicles != null && !newVehicles.isEmpty()) {
-			entityManager.getTransaction().begin();
-			
 			for (Vehicle vehicle : newVehicles) {
 				entityManager.persist(vehicle);
 			}
 			
 			new EmailSender().send(newVehicles);
-			
-			entityManager.getTransaction().commit();
 		}
 	}
 	
