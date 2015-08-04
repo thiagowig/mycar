@@ -1,7 +1,6 @@
-package br.com.zaul.mycar.servlet;
+package br.com.zaul.mycar.email;
 
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.List;
 import java.util.Properties;
 
 import javax.mail.Message;
@@ -11,26 +10,12 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/trigger")
-public class TriggerServlet extends HttpServlet {
+import br.com.zaul.mycar.entities.Vehicle;
 
-	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
+public class EmailSender {
 
-		this.sendMail();
-		
-		PrintWriter out = resp.getWriter();
-		out.println("JOB Triggered");
-	}
-
-	private void sendMail() {
+	public void send(List<Vehicle> newVehicles) {
 		Properties props = new Properties();
 		props.put("mail.smtp.host", "smtp.gmail.com");
 		props.put("mail.smtp.socketFactory.port", "465");
@@ -52,7 +37,7 @@ public class TriggerServlet extends HttpServlet {
 			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("dev.thiago@gmail.com"));
 			message.setSubject("Novos veículos cadastrados");
 
-			message.setContent("<h1>Sera?</h1>", "text/html");
+			message.setContent(this.generateEmailContent(newVehicles), "text/html");
 
 			Transport.send(message);
 
@@ -61,6 +46,31 @@ public class TriggerServlet extends HttpServlet {
 		} catch (MessagingException e) {
 			throw new RuntimeException(e);
 		}
-		
+	}
+
+	private String generateEmailContent(List<Vehicle> newVehicles) {
+		StringBuilder email = new StringBuilder();
+
+		email.append("<h1>Novos Veículos</h1></br>");
+		email.append("<table>");
+
+		for (Vehicle vehicle : newVehicles) {
+			
+			email.append("<tr>");
+			email.append("<td>");
+			email.append("<img src=\"" + vehicle.getImage() + "\" />");
+			email.append("</td>");
+			email.append("<td>");
+			email.append("<a href=\"" + vehicle.getSearchSite().getDomain() + vehicle.getHref() + "\">" + vehicle.getDescription() + "</a>");
+			email.append("</td>");
+			email.append("<td>");
+			email.append("<span>" + vehicle.getPrice() + "</span>");
+			email.append("</td>");
+			email.append("</tr>");
+		}
+
+		email.append("</table>");
+
+		return email.toString();
 	}
 }
