@@ -15,7 +15,6 @@ import lombok.Data;
 
 @Entity
 @Table
-@Data
 public class SearchSite implements Serializable {
 
 	@Id
@@ -32,4 +31,45 @@ public class SearchSite implements Serializable {
 	@Transient
 	private List<Long> existingVehicles;
 
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String getDomain() {
+		return domain;
+	}
+
+	public void setDomain(String domain) {
+		this.domain = domain;
+	}
+
+	public String getInitialParameters() {
+		return initialParameters;
+	}
+
+	public void setInitialParameters(String initialParameters) {
+		this.initialParameters = initialParameters;
+	}
+
+	public List<Long> getExistingVehicles() {
+		return existingVehicles;
+	}
+
+	public void setExistingVehicles(List<Long> existingVehicles) {
+		this.existingVehicles = existingVehicles;
+	}
+
+	
 }
