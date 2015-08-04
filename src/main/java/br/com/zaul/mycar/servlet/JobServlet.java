@@ -3,6 +3,7 @@ package br.com.zaul.mycar.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.ejb.EJB;
 import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,7 +16,7 @@ import br.com.zaul.mycar.service.CarService;
 @WebServlet("/job")
 public class JobServlet extends HttpServlet {
 	
-	@Inject
+	@EJB
 	private CarService carsService;
 
 	@Override

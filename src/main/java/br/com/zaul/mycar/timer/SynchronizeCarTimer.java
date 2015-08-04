@@ -1,15 +1,15 @@
 package br.com.zaul.mycar.timer;
 
+import javax.ejb.EJB;
 import javax.ejb.Schedule;
 import javax.ejb.Stateless;
-import javax.inject.Inject;
 
 import br.com.zaul.mycar.service.CarService;
 
 @Stateless
 public class SynchronizeCarTimer {
 	
-	@Inject
+	@EJB
 	private CarService carService;
 
 	@Schedule(second="*", minute="1",hour="*", persistent=false)
