@@ -12,8 +12,8 @@ public class SynchronizeCarTimer {
 	@EJB
 	private CarService carService;
 
-	@Schedule(second="*", minute="1",hour="*", persistent=false)
+	@Schedule(second="*", minute="*/15",hour="*", persistent=false)
 	public void findNewCars() {
-		//carService.synchronizeCars();
+		carService.synchronizeCars();
 	}
 }
