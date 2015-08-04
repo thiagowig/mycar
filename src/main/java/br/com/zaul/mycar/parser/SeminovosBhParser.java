@@ -14,7 +14,7 @@ import org.jsoup.select.Elements;
 
 import br.com.zaul.mycar.entities.SearchSite;
 import br.com.zaul.mycar.entities.Vehicle;
-
+ 
 public class SeminovosBhParser {
 
 	private SearchSite searchSite;
