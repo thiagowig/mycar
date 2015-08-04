@@ -15,7 +15,7 @@ import lombok.Data;
 
 @Entity
 @Table
-@Data 
+@Data
 public class SearchSite implements Serializable {
 
 	@Id

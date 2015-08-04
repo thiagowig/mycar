@@ -14,7 +14,7 @@ import javax.mail.internet.MimeMessage;
 import br.com.zaul.mycar.entities.Vehicle;
 
 public class EmailSender {
- 
+
 	public void send(List<Vehicle> newVehicles) {
 		Properties props = new Properties();
 		props.put("mail.smtp.host", "smtp.gmail.com");

@@ -14,7 +14,7 @@ import lombok.Data;
 
 @Entity
 @Table
-@Data 
+@Data
 public class Vehicle implements Serializable {
 	
 	@Id
