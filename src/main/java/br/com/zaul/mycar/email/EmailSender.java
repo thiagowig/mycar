@@ -14,8 +14,8 @@ import javax.mail.internet.MimeMessage;
 import br.com.zaul.mycar.entities.Vehicle;
 
 public class EmailSender {
-
-	public void send(List<Vehicle> newVehicles) {
+	
+	public void send(String content) {
 		Properties props = new Properties();
 		props.put("mail.smtp.host", "smtp.gmail.com");
 		props.put("mail.smtp.socketFactory.port", "465");
@@ -37,7 +37,7 @@ public class EmailSender {
 			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("dev.thiago@gmail.com"));
 			message.setSubject("Novos veículos cadastrados");
 
-			message.setContent(this.generateEmailContent(newVehicles), "text/html");
+			message.setContent(content, "text/html");
 
 			Transport.send(message);
 
@@ -46,6 +46,11 @@ public class EmailSender {
 		} catch (MessagingException e) {
 			throw new RuntimeException(e);
 		}
+	}
+
+	public void send(List<Vehicle> newVehicles) {
+		String content = this.generateEmailContent(newVehicles);
+		this.send(content);
 	}
 
 	private String generateEmailContent(List<Vehicle> newVehicles) {
