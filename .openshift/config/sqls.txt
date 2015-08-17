@@ -1,0 +1,63 @@
+SELECT COUNT(*) FROM vehicle;
+SELECT * FROM vehicle;
+
+DELETE FROM vehicle where SEARCHSITE_ID = 1; 
+
+INSERT INTO mycar.SearchSite (description, domain, initialParameters) 
+VALUES (
+	'Seminovos BH - Punto',
+    'http://www.seminovosbh.com.br',
+    '/buscaavancada/carros/modelo/129/valor2/40000/ano1/2013/km2/30000/'    
+);
+
+
+INSERT INTO mycar.SearchSite (description, domain, initialParameters) 
+VALUES (
+	'Seminovos BH - C4',
+    'http://www.seminovosbh.com.br',
+    '/buscaavancada/carros/modelo/81/valor2/45000/ano1/2013/km2/30000/'    
+);
+
+INSERT INTO mycar.SearchSite (description, domain, initialParameters) 
+VALUES (
+	'Seminovos BH - Bravo',
+    'http://www.seminovosbh.com.br',
+    '/buscaavancada/carros/modelo/1225/ano1/2013/km2/35000/valor2/45000/'    
+);
+
+INSERT INTO mycar.SearchSite (description, domain, initialParameters) 
+VALUES (
+	'Seminovos BH - 308',
+    'http://www.seminovosbh.com.br',
+    '/buscaavancada/carros/modelo/1436/valor2/40000/ano1/2013/km2/30000/'    
+);
+
+INSERT INTO mycar.SearchSite (description, domain, initialParameters) 
+VALUES (
+	'Seminovos BH - Fiesta',
+    'http://www.seminovosbh.com.br',
+    '/buscaavancada/carros/modelo/166/valor1/30000/valor2/40000/ano1/2013/km2/25000/'    
+);
+
+
+INSERT INTO mycar.SearchSite (description, domain, initialParameters) 
+VALUES (
+	'Seminovos BH - i30',
+    'http://www.seminovosbh.com.br',
+    '/buscaavancada/carros/modelo/600/valor2/45000/ano1/2012/km2/35000/'    
+);
+
+
+
+
+
+
+
+
+
+
+
+http://www.seminovosbh.com.br/buscaavancada/carros/modelo/81/valor2/45000/ano1/2013/km2/30000/
+
+
+SELECT * FrOM searchsite;

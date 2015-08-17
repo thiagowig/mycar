@@ -18,7 +18,7 @@ public class PingTimer {
 	@Schedule(second="*", minute="*",hour="*/6", persistent=false)
 	public void pingServer() {
 		pingService.pingServer();
-		new EmailSender().send("Ping server: " + new Date().toString());
+		new EmailSender().send("Ping server: " + new Date().toString(), "PING!");
 	}
 
 }

@@ -15,7 +15,7 @@ import br.com.zaul.mycar.entities.Vehicle;
 
 public class EmailSender {
 	
-	public void send(String content) {
+	public void send(String content, String subject) {
 		Properties props = new Properties();
 		props.put("mail.smtp.host", "smtp.gmail.com");
 		props.put("mail.smtp.socketFactory.port", "465");
@@ -35,7 +35,7 @@ public class EmailSender {
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress("thiagowigmycar@gmail.com"));
 			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("dev.thiago@gmail.com"));
-			message.setSubject("Novos veículos cadastrados");
+			message.setSubject(subject);
 
 			message.setContent(content, "text/html");
 
@@ -50,7 +50,7 @@ public class EmailSender {
 
 	public void send(List<Vehicle> newVehicles) {
 		String content = this.generateEmailContent(newVehicles);
-		this.send(content);
+		this.send(content, "Novos veículos cadastrados");
 	}
 
 	private String generateEmailContent(List<Vehicle> newVehicles) {
