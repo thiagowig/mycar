@@ -23,7 +23,7 @@ public class PingServlet extends HttpServlet {
 		pingService.pingServer();;
 		
 		PrintWriter out = resp.getWriter();
-		out.println("Pong");
+		out.println("pong");
 	}
 	
 }
