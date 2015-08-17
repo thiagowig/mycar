@@ -10,7 +10,7 @@ import br.com.zaul.mycar.email.EmailSender;
 import br.com.zaul.mycar.service.PingService;
 
 @Stateless
-public class PingTimer {
+public class PingTimer { 
 	
 	@EJB
 	private PingService pingService;
