@@ -15,7 +15,7 @@ public class PingTimer {
 	@EJB
 	private PingService pingService;
 	
-	@Schedule(second="*", minute="*",hour="*/6", persistent=false)
+	@Schedule(hour="*/6", persistent=false)
 	public void pingServer() {
 		pingService.pingServer();
 		new EmailSender().send("Ping server: " + new Date().toString(), "PING!");
